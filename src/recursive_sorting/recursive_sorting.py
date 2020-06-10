@@ -55,13 +55,6 @@ def merge_sort(arr):
 
 # implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
-    # Your code here
-
-    return arr
-
-
-def merge_sort_in_place(arr, l, r):
-    # Your code here
     start2 = mid + 1
 
     # If the direct merge is already sorted
@@ -87,13 +80,27 @@ def merge_sort_in_place(arr, l, r):
 
             arr[start] = value
 
-            # Update all the pointers ß
+            # Update all the pointers
             start += 1
             mid += 1
             start2 += 1
 
     return arr
 
+
+def merge_sort_in_place(arr, l, r):
+    # Your code here
+    if (l < r):
+
+        # Same as (l + r) / 2, but avoids overflow
+        # for large l and r
+        m = l + (r - l) // 2
+
+        # Sort first and second halves
+        merge_sort_in_place(arr, l, m)
+        merge_sort_in_place(arr, m + 1, r)
+
+        merge_in_place(arr, l, m, r)
     return arr
 
 
